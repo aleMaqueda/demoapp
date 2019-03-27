@@ -4,13 +4,12 @@ services:
 before_install:
   - echo "BEFORE INSTALL START"
   - gem install bundler
-  - docker build -t maqueda/demoapp .
   - echo "BEFORE INSTALL END"
 script:
-  - docker push maqueda/demoapp
+  - docker build -t maqueda/demoapp .
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - 
+  - docker push maqueda/demoapp
 deploy:
   provider: elasticbeanstalk
   region: "us-east-2"

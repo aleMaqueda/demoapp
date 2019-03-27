@@ -11,7 +11,7 @@ import { AuthService } from '../shared/services/auth.service';
 export class ChartComponent implements OnInit {
   title = 'app';
   data: ChartData[];
-  url = 'https://my.api.mockaroo.com/sales.json?key=050f6c00';
+  url = 'https://my.api.mockaroo.com/cars.json?key=90117440';
   make = [];
   average = [];
   chart = [];

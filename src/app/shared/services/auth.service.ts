@@ -86,9 +86,16 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider());
   }
+  FacebookAuth() {
+    return this.AuthLogin(new auth.FacebookAuthProvider());
+  }
+  GitHubAuth() {
+    return this.AuthLogin(new auth.GithubAuthProvider());
+  }
 
   // Auth logic to run auth providers
   AuthLogin(provider) {
+    console.log(provider);
     return this.afAuth.auth.signInWithPopup(provider)
     .then((result) => {
        this.ngZone.run(() => {
@@ -96,6 +103,7 @@ export class AuthService {
         })
       this.SetUserData(result.user);
     }).catch((error) => {
+      console.log(error)
       window.alert(error)
     })
   }
@@ -124,4 +132,5 @@ export class AuthService {
       this.router.navigate(['sign-in']);
     })
   }
+
 }

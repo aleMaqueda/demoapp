@@ -20,6 +20,7 @@ import { ForgotPasswordComponent } from 'src/app/components/forgot-password/forg
 import { VerifyEmailComponent } from 'src/app/components/verify-email/verify-email.component';
 import { SecureInnerPagesGuard } from 'src/app/shared/guard/secure-inner-pages.guard';
 import { AuthGuard } from 'src/app/shared/guard/auth.guard';
+import { ChartComponent } from 'src/app/chart/chart.component';
 
 // Import all the components for which navigation service has to be activated 
 
@@ -30,7 +31,8 @@ const routes: Routes = [
   { path: 'register-user', component: SignUpComponent, canActivate: [SecureInnerPagesGuard]},
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] }
+  { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] },
+  { path: 'charts', component: ChartComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

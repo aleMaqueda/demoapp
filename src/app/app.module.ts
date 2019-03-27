@@ -13,7 +13,8 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 import { AuthService } from './shared/services/auth.service';
-import { ChartsComponent } from './charts/charts.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ChartComponent } from './chart/chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,14 +23,15 @@ import { ChartsComponent } from './charts/charts.component';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    ChartsComponent
+    ChartComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

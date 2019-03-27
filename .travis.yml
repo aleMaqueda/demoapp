@@ -2,7 +2,21 @@ sudo: required
 services:
   - docker
 
-before_install:
+script:
   - docker build -t maqueda/demoapp .
 
-
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push maqueda/demoapp
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "demoapp"
+  env: "Demoapp-env"
+  bucket_name: "elasticbeanstalk-us-east-2-704369017308"
+  bucket_path: "demoapp"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY
